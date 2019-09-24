@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+
+  composer:
+    image: composer
+    working_dir: /var/www/fenix
+    volumes:
+      - .:/var/www/fenix
+    command: composer install
+
+  npm:
+    image: node:10
+    working_dir: /var/www/fenix
+    volumes:
+      - .:/var/www/fenix
+    command: npm install && npm run dev
+
+  postgres:
+    container_name: server-postgres
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "fenix1234"
+      POSTGRES_DB: "fenix"
+    ports:
+      - "5432:5432"
+
+  back:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /var/www/fenix
+    links:
+      - postgres
+    volumes:
+      - .:/var/www/fenix
