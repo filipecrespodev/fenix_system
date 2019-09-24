@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  back:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /var/www/html/
+    links:
+      - postgres
+    volumes:
+      - .:/var/www/html/
+
+  composer:
+    image: composer
+    command: composer install
+    working_dir: /var/www/html/
+    volumes:
+      - .:/var/www/html/
+
+  npm:
+    image: node:10
+    command: npm install && npm run dev
+    working_dir: /var/www/html/
+    volumes:
+      - .:/var/www/html/
+
+  postgres:
+    container_name: server-postgres
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "Postgres2019!"
+      POSTGRES_DB: "docker"
+    ports:
+      - "5432:5432"
+    volumes:
+      - .data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: server-pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "t@t.com"
+      PGADMIN_DEFAULT_PASSWORD: "PgAdmin2019!"
+    ports:
+      - "7000:80"
+      - "7001:443"
+    links:
+      - postgres
