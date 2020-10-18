@@ -1,7 +1,6 @@
 version: '3'
 
 services:
-
   composer:
     image: composer
     working_dir: /var/www/fenix
@@ -17,7 +16,6 @@ services:
     command: npm install && npm run dev
 
   postgres:
-    container_name: server-postgres
     image: postgres
     environment:
       POSTGRES_PASSWORD: "fenix1234"
