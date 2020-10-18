@@ -166,12 +166,12 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
-        Prettus\Repository\Providers\RepositoryServiceProvider::class,        
+        // Intervention\Image\ImageServiceProvider::class,
+        // Prettus\Repository\Providers\RepositoryServiceProvider::class,
         /*
          * Package Service Providers...
          */
-        Laravel\Tinker\TinkerServiceProvider::class,
+        // Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -182,9 +182,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FenixRepositoryProvider::class,
         // View Composer - Envia as info, para as view.
-        App\Providers\ViewServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        // App\Providers\ViewServiceProvider::class,
+        // Maatwebsite\Excel\ExcelServiceProvider::class,
+        // Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
